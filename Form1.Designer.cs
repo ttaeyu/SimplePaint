@@ -51,6 +51,7 @@
             // 
             lblAppName.AutoSize = true;
             lblAppName.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblAppName.ForeColor = Color.Blue;
             lblAppName.Location = new Point(22, 29);
             lblAppName.Name = "lblAppName";
             lblAppName.Size = new Size(236, 54);
