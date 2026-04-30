@@ -74,7 +74,7 @@
             picCanvas.Location = new Point(2, 2);
             picCanvas.Margin = new Padding(2);
             picCanvas.Name = "picCanvas";
-            picCanvas.Size = new Size(614, 340);
+            picCanvas.Size = new Size(697, 384);
             picCanvas.SizeMode = PictureBoxSizeMode.StretchImage;
             picCanvas.TabIndex = 1;
             picCanvas.TabStop = false;
@@ -235,14 +235,14 @@
             panelCanvas.Controls.Add(picCanvas);
             panelCanvas.Location = new Point(17, 167);
             panelCanvas.Name = "panelCanvas";
-            panelCanvas.Size = new Size(624, 344);
+            panelCanvas.Size = new Size(706, 388);
             panelCanvas.TabIndex = 7;
             // 
             // trbZoom
             // 
             trbZoom.Location = new Point(6, 22);
             trbZoom.Maximum = 50;
-            trbZoom.Minimum = 10;
+            trbZoom.Minimum = 1;
             trbZoom.Name = "trbZoom";
             trbZoom.Size = new Size(135, 45);
             trbZoom.TabIndex = 2;
@@ -263,7 +263,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(727, 523);
+            ClientSize = new Size(727, 567);
             Controls.Add(groupBox5);
             Controls.Add(panelCanvas);
             Controls.Add(btnSaveFile);
