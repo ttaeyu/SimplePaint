@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             lblAppName = new Label();
             picCanvas = new PictureBox();
             groupBox1 = new GroupBox();
@@ -62,10 +63,10 @@
             // 
             // picCanvas
             // 
-            picCanvas.Location = new Point(9, 140);
+            picCanvas.Location = new Point(17, 166);
             picCanvas.Margin = new Padding(2);
             picCanvas.Name = "picCanvas";
-            picCanvas.Size = new Size(602, 301);
+            picCanvas.Size = new Size(602, 332);
             picCanvas.TabIndex = 1;
             picCanvas.TabStop = false;
             picCanvas.Click += picCanvas_Click;
@@ -78,12 +79,13 @@
             // 
             groupBox1.Controls.Add(btnRectangle);
             groupBox1.Controls.Add(btnLine);
+            groupBox1.Controls.Add(btnCircle);
             groupBox1.ForeColor = Color.Red;
             groupBox1.Location = new Point(17, 64);
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(184, 59);
+            groupBox1.Size = new Size(190, 98);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "도형선택";
@@ -91,35 +93,45 @@
             // btnRectangle
             // 
             btnRectangle.ForeColor = SystemColors.ActiveCaptionText;
-            btnRectangle.Location = new Point(62, 20);
+            btnRectangle.Image = (Image)resources.GetObject("btnRectangle.Image");
+            btnRectangle.ImageAlign = ContentAlignment.TopCenter;
+            btnRectangle.Location = new Point(60, 20);
             btnRectangle.Margin = new Padding(2);
             btnRectangle.Name = "btnRectangle";
-            btnRectangle.Size = new Size(53, 28);
+            btnRectangle.Size = new Size(53, 67);
             btnRectangle.TabIndex = 1;
             btnRectangle.Text = "사각형";
+            btnRectangle.TextAlign = ContentAlignment.BottomCenter;
             btnRectangle.UseVisualStyleBackColor = true;
             btnRectangle.Click += btnRectangle_Click;
             // 
             // btnLine
             // 
             btnLine.ForeColor = SystemColors.ActiveCaptionText;
-            btnLine.Location = new Point(5, 20);
+            btnLine.Image = (Image)resources.GetObject("btnLine.Image");
+            btnLine.ImageAlign = ContentAlignment.TopCenter;
+            btnLine.Location = new Point(4, 20);
             btnLine.Margin = new Padding(2);
             btnLine.Name = "btnLine";
-            btnLine.Size = new Size(53, 28);
+            btnLine.Size = new Size(52, 67);
             btnLine.TabIndex = 0;
             btnLine.Text = "직선";
+            btnLine.TextAlign = ContentAlignment.BottomCenter;
             btnLine.UseVisualStyleBackColor = true;
             btnLine.Click += btnLine_Click;
             // 
             // btnCircle
             // 
-            btnCircle.Location = new Point(137, 84);
+            btnCircle.ForeColor = SystemColors.ActiveCaptionText;
+            btnCircle.Image = (Image)resources.GetObject("btnCircle.Image");
+            btnCircle.ImageAlign = ContentAlignment.TopCenter;
+            btnCircle.Location = new Point(117, 20);
             btnCircle.Margin = new Padding(2);
             btnCircle.Name = "btnCircle";
-            btnCircle.Size = new Size(53, 28);
+            btnCircle.Size = new Size(53, 67);
             btnCircle.TabIndex = 2;
             btnCircle.Text = "원";
+            btnCircle.TextAlign = ContentAlignment.BottomCenter;
             btnCircle.UseVisualStyleBackColor = true;
             btnCircle.Click += btnCircle_Click;
             // 
@@ -180,6 +192,7 @@
             btnOpenFile.TabIndex = 5;
             btnOpenFile.Text = "열기";
             btnOpenFile.UseVisualStyleBackColor = true;
+            btnOpenFile.Click += btnOpenFile_Click;
             // 
             // btnSaveFile
             // 
@@ -198,18 +211,18 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(622, 445);
+            ClientSize = new Size(653, 523);
             Controls.Add(btnSaveFile);
             Controls.Add(btnOpenFile);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
-            Controls.Add(btnCircle);
             Controls.Add(groupBox1);
             Controls.Add(picCanvas);
             Controls.Add(lblAppName);
             Margin = new Padding(2);
             Name = "Form1";
             Text = "Simple Paint v1.0";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)picCanvas).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);

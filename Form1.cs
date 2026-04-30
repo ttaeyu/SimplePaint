@@ -188,5 +188,43 @@ namespace SimplePaint
         {
 
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            // 1. "어떤 그림을 열까?" 물어보는 창을 준비해요.
+            OpenFileDialog openDlg = new OpenFileDialog();
+            openDlg.Title = "배경 그림 불러오기";
+            openDlg.Filter = "이미지 파일(*.png, *.jpg, *.bmp)|*.png;*.jpg;*.bmp";
+
+            // 2. 사용자가 사진을 고르고 '열기' 버튼을 딱 눌렀다면?
+            if (openDlg.ShowDialog() == DialogResult.OK)
+            {
+                // 3. 고른 사진을 컴퓨터 임시 기억장치로 불러와요.
+                Image loadedImage = Image.FromFile(openDlg.FileName);
+
+                // 4. 불러온 사진이랑 똑같은 크기로 '진짜 도화지(canvasBitmap)'를 새로 만듭니다!
+                canvasBitmap = new Bitmap(loadedImage.Width, loadedImage.Height);
+
+                // 5. 새 도화지에 그림을 그릴 '화가(canvasGraphics)'도 새로 배정해 줘요.
+                canvasGraphics = Graphics.FromImage(canvasBitmap);
+
+                // 6. 하얀 도화지 위에 방금 불러온 사진을 쫙~ 복사해서 붙여넣습니다.
+                canvasGraphics.DrawImage(loadedImage, 0, 0, loadedImage.Width, loadedImage.Height);
+
+                // 7. 이제 사진이 입혀진 도화지를 화면(픽쳐박스)에 끼워줍니다.
+                picCanvas.Image = canvasBitmap;
+
+                // 8. 픽쳐박스의 크기도 사진 크기에 딱 맞게 조절해 줍니다![cite: 2]
+                picCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
+
+                // 임시로 불렀던 사진 파일은 썼으니 메모리에서 정리!
+                loadedImage.Dispose();
+            }
+        }
     }
 }
