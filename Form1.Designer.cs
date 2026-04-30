@@ -31,12 +31,12 @@
             lblAppName = new Label();
             picCanvas = new PictureBox();
             groupBox1 = new GroupBox();
-            btnLine = new Button();
             btnRectangle = new Button();
+            btnLine = new Button();
             btnCircle = new Button();
             groupBox2 = new GroupBox();
-            groupBox3 = new GroupBox();
             cmbColor = new ComboBox();
+            groupBox3 = new GroupBox();
             trbLineWidth = new TrackBar();
             btnOpenFile = new Button();
             btnSaveFile = new Button();
@@ -65,6 +65,9 @@
             picCanvas.Size = new Size(766, 252);
             picCanvas.TabIndex = 1;
             picCanvas.TabStop = false;
+            picCanvas.Click += picCanvas_Click;
+            picCanvas.MouseDown += picCanvas_MouseDown;
+            picCanvas.MouseUp += picCanvas_MouseUp;
             // 
             // groupBox1
             // 
@@ -77,15 +80,6 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
             // 
-            // btnLine
-            // 
-            btnLine.Location = new Point(6, 26);
-            btnLine.Name = "btnLine";
-            btnLine.Size = new Size(68, 38);
-            btnLine.TabIndex = 0;
-            btnLine.Text = "직선";
-            btnLine.UseVisualStyleBackColor = true;
-            // 
             // btnRectangle
             // 
             btnRectangle.Location = new Point(80, 26);
@@ -94,6 +88,15 @@
             btnRectangle.TabIndex = 1;
             btnRectangle.Text = "사각형";
             btnRectangle.UseVisualStyleBackColor = true;
+            // 
+            // btnLine
+            // 
+            btnLine.Location = new Point(6, 26);
+            btnLine.Name = "btnLine";
+            btnLine.Size = new Size(68, 38);
+            btnLine.TabIndex = 0;
+            btnLine.Text = "직선";
+            btnLine.UseVisualStyleBackColor = true;
             // 
             // btnCircle
             // 
@@ -114,6 +117,15 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "groupBox2";
             // 
+            // cmbColor
+            // 
+            cmbColor.FormattingEnabled = true;
+            cmbColor.Location = new Point(6, 36);
+            cmbColor.Name = "cmbColor";
+            cmbColor.Size = new Size(124, 28);
+            cmbColor.TabIndex = 0;
+            cmbColor.SelectedIndexChanged += cmbColor_SelectedIndexChanged;
+            // 
             // groupBox3
             // 
             groupBox3.Controls.Add(trbLineWidth);
@@ -124,20 +136,13 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "groupBox3";
             // 
-            // cmbColor
-            // 
-            cmbColor.FormattingEnabled = true;
-            cmbColor.Location = new Point(6, 36);
-            cmbColor.Name = "cmbColor";
-            cmbColor.Size = new Size(124, 28);
-            cmbColor.TabIndex = 0;
-            // 
             // trbLineWidth
             // 
             trbLineWidth.Location = new Point(15, 23);
             trbLineWidth.Name = "trbLineWidth";
             trbLineWidth.Size = new Size(160, 56);
             trbLineWidth.TabIndex = 0;
+            trbLineWidth.Scroll += trbLineWidth_Scroll;
             // 
             // btnOpenFile
             // 
