@@ -52,17 +52,19 @@
             lblAppName.AutoSize = true;
             lblAppName.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
             lblAppName.ForeColor = Color.Blue;
-            lblAppName.Location = new Point(22, 29);
+            lblAppName.Location = new Point(17, 22);
+            lblAppName.Margin = new Padding(2, 0, 2, 0);
             lblAppName.Name = "lblAppName";
-            lblAppName.Size = new Size(236, 54);
+            lblAppName.Size = new Size(190, 45);
             lblAppName.TabIndex = 0;
             lblAppName.Text = "SimplePaint";
             // 
             // picCanvas
             // 
-            picCanvas.Location = new Point(12, 186);
+            picCanvas.Location = new Point(9, 140);
+            picCanvas.Margin = new Padding(2);
             picCanvas.Name = "picCanvas";
-            picCanvas.Size = new Size(766, 252);
+            picCanvas.Size = new Size(596, 189);
             picCanvas.TabIndex = 1;
             picCanvas.TabStop = false;
             picCanvas.Click += picCanvas_Click;
@@ -75,46 +77,56 @@
             // 
             groupBox1.Controls.Add(btnRectangle);
             groupBox1.Controls.Add(btnLine);
-            groupBox1.Location = new Point(22, 86);
+            groupBox1.Location = new Point(17, 64);
+            groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(236, 79);
+            groupBox1.Padding = new Padding(2);
+            groupBox1.Size = new Size(184, 59);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
             // 
             // btnRectangle
             // 
-            btnRectangle.Location = new Point(80, 26);
+            btnRectangle.Location = new Point(62, 20);
+            btnRectangle.Margin = new Padding(2);
             btnRectangle.Name = "btnRectangle";
-            btnRectangle.Size = new Size(68, 38);
+            btnRectangle.Size = new Size(53, 28);
             btnRectangle.TabIndex = 1;
             btnRectangle.Text = "사각형";
             btnRectangle.UseVisualStyleBackColor = true;
+            btnRectangle.Click += btnRectangle_Click;
             // 
             // btnLine
             // 
-            btnLine.Location = new Point(6, 26);
+            btnLine.Location = new Point(5, 20);
+            btnLine.Margin = new Padding(2);
             btnLine.Name = "btnLine";
-            btnLine.Size = new Size(68, 38);
+            btnLine.Size = new Size(53, 28);
             btnLine.TabIndex = 0;
             btnLine.Text = "직선";
             btnLine.UseVisualStyleBackColor = true;
+            btnLine.Click += btnLine_Click;
             // 
             // btnCircle
             // 
-            btnCircle.Location = new Point(176, 112);
+            btnCircle.Location = new Point(137, 84);
+            btnCircle.Margin = new Padding(2);
             btnCircle.Name = "btnCircle";
-            btnCircle.Size = new Size(68, 38);
+            btnCircle.Size = new Size(53, 28);
             btnCircle.TabIndex = 2;
             btnCircle.Text = "원";
             btnCircle.UseVisualStyleBackColor = true;
+            btnCircle.Click += btnCircle_Click;
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(cmbColor);
-            groupBox2.Location = new Point(282, 86);
+            groupBox2.Location = new Point(219, 64);
+            groupBox2.Margin = new Padding(2);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(136, 79);
+            groupBox2.Padding = new Padding(2);
+            groupBox2.Size = new Size(106, 59);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
             groupBox2.Text = "groupBox2";
@@ -122,53 +134,60 @@
             // cmbColor
             // 
             cmbColor.FormattingEnabled = true;
-            cmbColor.Location = new Point(6, 36);
+            cmbColor.Location = new Point(5, 27);
+            cmbColor.Margin = new Padding(2);
             cmbColor.Name = "cmbColor";
-            cmbColor.Size = new Size(124, 28);
+            cmbColor.Size = new Size(97, 23);
             cmbColor.TabIndex = 0;
             cmbColor.SelectedIndexChanged += cmbColor_SelectedIndexChanged;
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(trbLineWidth);
-            groupBox3.Location = new Point(424, 86);
+            groupBox3.Location = new Point(330, 64);
+            groupBox3.Margin = new Padding(2);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(190, 79);
+            groupBox3.Padding = new Padding(2);
+            groupBox3.Size = new Size(148, 59);
             groupBox3.TabIndex = 4;
             groupBox3.TabStop = false;
             groupBox3.Text = "groupBox3";
             // 
             // trbLineWidth
             // 
-            trbLineWidth.Location = new Point(15, 23);
+            trbLineWidth.Location = new Point(12, 17);
+            trbLineWidth.Margin = new Padding(2);
             trbLineWidth.Name = "trbLineWidth";
-            trbLineWidth.Size = new Size(160, 56);
+            trbLineWidth.Size = new Size(124, 45);
             trbLineWidth.TabIndex = 0;
             trbLineWidth.Scroll += trbLineWidth_Scroll;
             // 
             // btnOpenFile
             // 
-            btnOpenFile.Location = new Point(633, 117);
+            btnOpenFile.Location = new Point(492, 88);
+            btnOpenFile.Margin = new Padding(2);
             btnOpenFile.Name = "btnOpenFile";
-            btnOpenFile.Size = new Size(72, 48);
+            btnOpenFile.Size = new Size(56, 36);
             btnOpenFile.TabIndex = 5;
             btnOpenFile.Text = "열기";
             btnOpenFile.UseVisualStyleBackColor = true;
             // 
             // btnSaveFile
             // 
-            btnSaveFile.Location = new Point(711, 117);
+            btnSaveFile.Location = new Point(553, 88);
+            btnSaveFile.Margin = new Padding(2);
             btnSaveFile.Name = "btnSaveFile";
-            btnSaveFile.Size = new Size(72, 48);
+            btnSaveFile.Size = new Size(56, 36);
             btnSaveFile.TabIndex = 6;
             btnSaveFile.Text = "저장";
             btnSaveFile.UseVisualStyleBackColor = true;
+            btnSaveFile.Click += btnSaveFile_Click;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(9F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(622, 338);
             Controls.Add(btnSaveFile);
             Controls.Add(btnOpenFile);
             Controls.Add(groupBox3);
@@ -177,6 +196,7 @@
             Controls.Add(groupBox1);
             Controls.Add(picCanvas);
             Controls.Add(lblAppName);
+            Margin = new Padding(2);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)picCanvas).EndInit();
