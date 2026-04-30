@@ -9,7 +9,9 @@ namespace SimplePaint
         Color penColor = Color.Black;
         int penWidth = 2;
         Bitmap canvasBitmap;     // 진짜 그림이 영구적으로 저장될 도화지
-        Graphics canvasGraphics; // 이 진짜 도화지에만 그림을 그리는 전담 화가
+        Graphics canvasGraphics;// 이 진짜 도화지에만 그림을 그리는 전담 화가
+        Point startPScreen, endPScreen; // 화면 미리보기용 좌표 추가!
+
         public Form1()
         {
             InitializeComponent();
@@ -60,91 +62,75 @@ namespace SimplePaint
 
         private void picCanvas_MouseDown(object sender, MouseEventArgs e)
         {
-            startP = e.Location; // 마우스를 누른 그 지점을 '시작점'으로 저장!
+            float zoomRatio = trbZoom.Value / 10.0f;
+            startP = new Point((int)(e.X / zoomRatio), (int)(e.Y / zoomRatio));
+            startPScreen = e.Location;
         }
 
         private void picCanvas_MouseUp(object sender, MouseEventArgs e)
         {
-            endP = e.Location;
+            float zoomRatio = trbZoom.Value / 10.0f;
+            endP = new Point((int)(e.X / zoomRatio), (int)(e.Y / zoomRatio));
 
-            // 일회용 화가(g)를 지우고 연필만 준비해요
             Pen myPen = new Pen(penColor, penWidth);
 
-            if (shapeNum == 1) // 직선
-            {
-                canvasGraphics.DrawLine(myPen, startP, endP); // g 대신 canvasGraphics로 바뀜![cite: 1]
-            }
-            else if (shapeNum == 2) // 사각형
+            if (shapeNum == 1) canvasGraphics.DrawLine(myPen, startP, endP);
+            else if (shapeNum == 2)
             {
                 int x = Math.Min(startP.X, endP.X);
                 int y = Math.Min(startP.Y, endP.Y);
-                int width = Math.Abs(startP.X - endP.X);
-                int height = Math.Abs(startP.Y - endP.Y);
-
-                canvasGraphics.DrawRectangle(myPen, x, y, width, height);
+                int w = Math.Abs(startP.X - endP.X);
+                int h = Math.Abs(startP.Y - endP.Y);
+                canvasGraphics.DrawRectangle(myPen, x, y, w, h);
             }
-            else if (shapeNum == 3) // 원
+            else if (shapeNum == 3)
             {
                 int x = Math.Min(startP.X, endP.X);
                 int y = Math.Min(startP.Y, endP.Y);
-                int width = Math.Abs(startP.X - endP.X);
-                int height = Math.Abs(startP.Y - endP.Y);
-
-                canvasGraphics.DrawEllipse(myPen, x, y, width, height);
+                int w = Math.Abs(startP.X - endP.X);
+                int h = Math.Abs(startP.Y - endP.Y);
+                canvasGraphics.DrawEllipse(myPen, x, y, w, h);
             }
 
-            // ★중요★ 진짜 도화지에 그림이 추가됐으니, 화면도 새로고침해서 보여달라고 명령해요![cite: 1]
             picCanvas.Invalidate();
-
             myPen.Dispose();
         }
 
         private void picCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-            // 마우스를 왼쪽 버튼으로 누른 상태에서 움직일 때만 작동!
-            if (e.Button == MouseButtons.Left)
+            if (Control.MouseButtons == MouseButtons.Left)
             {
-                endP = e.Location; // 움직이는 동안의 위치를 계속 끝점으로 업데이트
-
-                // 이 부분이 핵심! 화면을 강제로 다시 그리게 해서 
-                // 이전에 그렸던 가이드라인은 지우고 새 가이드라인을 보여줍니다.
+                float zoomRatio = trbZoom.Value / 10.0f;
+                endP = new Point((int)(e.X / zoomRatio), (int)(e.Y / zoomRatio));
+                endPScreen = e.Location;
                 picCanvas.Invalidate();
             }
         }
 
         private void picCanvas_Paint(object sender, PaintEventArgs e)
         {
-            // 마우스 왼쪽 버튼이 눌려있을 때만 (드래그 중일 때만) 작동해요
             if (Control.MouseButtons == MouseButtons.Left)
             {
-                // 1. 연필 준비
-                Pen myPen = new Pen(penColor, penWidth);
-
-                // 2. Paint 전용 화가(e.Graphics)를 사용합니다!
-                if (shapeNum == 1) // 직선
+                float zoomRatio = trbZoom.Value / 10.0f;
+                Pen myPen = new Pen(penColor, penWidth * zoomRatio); // 확대된 만큼 연필도 두껍게 보이게!
+                myPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+                if (shapeNum == 1) e.Graphics.DrawLine(myPen, startPScreen, endPScreen);
+                else if (shapeNum == 2)
                 {
-                    e.Graphics.DrawLine(myPen, startP, endP);
+                    int x = Math.Min(startPScreen.X, endPScreen.X);
+                    int y = Math.Min(startPScreen.Y, endPScreen.Y);
+                    int w = Math.Abs(startPScreen.X - endPScreen.X);
+                    int h = Math.Abs(startPScreen.Y - endPScreen.Y);
+                    e.Graphics.DrawRectangle(myPen, x, y, w, h);
                 }
-                else if (shapeNum == 2) // 사각형
+                else if (shapeNum == 3)
                 {
-                    int x = Math.Min(startP.X, endP.X);
-                    int y = Math.Min(startP.Y, endP.Y);
-                    int width = Math.Abs(startP.X - endP.X);
-                    int height = Math.Abs(startP.Y - endP.Y);
-
-                    e.Graphics.DrawRectangle(myPen, x, y, width, height);
+                    int x = Math.Min(startPScreen.X, endPScreen.X);
+                    int y = Math.Min(startPScreen.Y, endPScreen.Y);
+                    int w = Math.Abs(startPScreen.X - endPScreen.X);
+                    int h = Math.Abs(startPScreen.Y - endPScreen.Y);
+                    e.Graphics.DrawEllipse(myPen, x, y, w, h);
                 }
-                else if (shapeNum == 3) // 원
-                {
-                    int x = Math.Min(startP.X, endP.X);
-                    int y = Math.Min(startP.Y, endP.Y);
-                    int width = Math.Abs(startP.X - endP.X);
-                    int height = Math.Abs(startP.Y - endP.Y);
-
-                    e.Graphics.DrawEllipse(myPen, x, y, width, height);
-                }
-
-                // 3. 연필 정리
                 myPen.Dispose();
             }
         }
@@ -165,7 +151,7 @@ namespace SimplePaint
                 canvasBitmap.Save(saveDlg.FileName);
 
                 // 잘 저장됐다고 안내창을 하나 띄워줘요. (이건 센스!)
-                MessageBox.Show("그림이 성공적으로 저장되었습니다!", "저장 완료");
+               
             }
         }
 
@@ -196,34 +182,40 @@ namespace SimplePaint
 
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
-            // 1. "어떤 그림을 열까?" 물어보는 창을 준비해요.
             OpenFileDialog openDlg = new OpenFileDialog();
             openDlg.Title = "배경 그림 불러오기";
             openDlg.Filter = "이미지 파일(*.png, *.jpg, *.bmp)|*.png;*.jpg;*.bmp";
 
-            // 2. 사용자가 사진을 고르고 '열기' 버튼을 딱 눌렀다면?
             if (openDlg.ShowDialog() == DialogResult.OK)
             {
-                // 3. 고른 사진을 컴퓨터 임시 기억장치로 불러와요.
                 Image loadedImage = Image.FromFile(openDlg.FileName);
 
-                // 4. 불러온 사진이랑 똑같은 크기로 '진짜 도화지(canvasBitmap)'를 새로 만듭니다!
+                // 1. 진짜 도화지를 불러온 사진 크기에 맞춰서 새로 만듭니다.
                 canvasBitmap = new Bitmap(loadedImage.Width, loadedImage.Height);
-
-                // 5. 새 도화지에 그림을 그릴 '화가(canvasGraphics)'도 새로 배정해 줘요.
                 canvasGraphics = Graphics.FromImage(canvasBitmap);
-
-                // 6. 하얀 도화지 위에 방금 불러온 사진을 쫙~ 복사해서 붙여넣습니다.
                 canvasGraphics.DrawImage(loadedImage, 0, 0, loadedImage.Width, loadedImage.Height);
-
-                // 7. 이제 사진이 입혀진 도화지를 화면(픽쳐박스)에 끼워줍니다.
                 picCanvas.Image = canvasBitmap;
 
-                // 8. 픽쳐박스의 크기도 사진 크기에 딱 맞게 조절해 줍니다![cite: 2]
-                picCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
+                // 👇 여기가 기존과 확 바뀐 마법의 3줄입니다! 👇
 
-                // 임시로 불렀던 사진 파일은 썼으니 메모리에서 정리!
+                // 2. 픽쳐박스를 꽁꽁 얼려두던 AutoSize 대신, '고무줄'처럼 늘어나는 StretchImage를 씁니다.
+                picCanvas.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                float zoomRatio = trbZoom.Value / 10.0f; // 여기서도 나누기 10 적용!
+                picCanvas.Width = (int)(canvasBitmap.Width * zoomRatio);
+                picCanvas.Height = (int)(canvasBitmap.Height * zoomRatio);
+
                 loadedImage.Dispose();
+            }
+        }
+
+        private void trbZoom_Scroll(object sender, EventArgs e)
+        {
+            if (canvasBitmap != null)
+            {
+                float zoomRatio = trbZoom.Value / 10.0f; // 마법의 나누기 10! (예: 15 / 10 = 1.5배)
+                picCanvas.Width = (int)(canvasBitmap.Width * zoomRatio);
+                picCanvas.Height = (int)(canvasBitmap.Height * zoomRatio);
             }
         }
     }

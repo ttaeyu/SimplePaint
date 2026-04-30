@@ -36,16 +36,23 @@
             btnLine = new Button();
             btnCircle = new Button();
             groupBox2 = new GroupBox();
+            groupBox4 = new GroupBox();
             cmbColor = new ComboBox();
             groupBox3 = new GroupBox();
             trbLineWidth = new TrackBar();
             btnOpenFile = new Button();
             btnSaveFile = new Button();
+            panelCanvas = new Panel();
+            trbZoom = new TrackBar();
+            groupBox5 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)picCanvas).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trbLineWidth).BeginInit();
+            panelCanvas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trbZoom).BeginInit();
+            groupBox5.SuspendLayout();
             SuspendLayout();
             // 
             // lblAppName
@@ -64,10 +71,11 @@
             // picCanvas
             // 
             picCanvas.BorderStyle = BorderStyle.FixedSingle;
-            picCanvas.Location = new Point(17, 166);
+            picCanvas.Location = new Point(2, 2);
             picCanvas.Margin = new Padding(2);
             picCanvas.Name = "picCanvas";
-            picCanvas.Size = new Size(625, 332);
+            picCanvas.Size = new Size(614, 340);
+            picCanvas.SizeMode = PictureBoxSizeMode.StretchImage;
             picCanvas.TabIndex = 1;
             picCanvas.TabStop = false;
             picCanvas.Click += picCanvas_Click;
@@ -138,6 +146,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(groupBox4);
             groupBox2.Controls.Add(cmbColor);
             groupBox2.ForeColor = Color.Blue;
             groupBox2.Location = new Point(219, 64);
@@ -148,6 +157,15 @@
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
             groupBox2.Text = "색 선택";
+            // 
+            // groupBox4
+            // 
+            groupBox4.Location = new Point(97, 55);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(200, 100);
+            groupBox4.TabIndex = 8;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "groupBox4";
             // 
             // cmbColor
             // 
@@ -184,9 +202,10 @@
             // 
             // btnOpenFile
             // 
+            btnOpenFile.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnOpenFile.Font = new Font("궁서체", 12F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btnOpenFile.ForeColor = Color.Blue;
-            btnOpenFile.Location = new Point(492, 81);
+            btnOpenFile.Location = new Point(492, 91);
             btnOpenFile.Margin = new Padding(2);
             btnOpenFile.Name = "btnOpenFile";
             btnOpenFile.Size = new Size(56, 43);
@@ -197,9 +216,10 @@
             // 
             // btnSaveFile
             // 
+            btnSaveFile.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSaveFile.Font = new Font("궁서체", 12F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btnSaveFile.ForeColor = Color.Red;
-            btnSaveFile.Location = new Point(553, 81);
+            btnSaveFile.Location = new Point(552, 91);
             btnSaveFile.Margin = new Padding(2);
             btnSaveFile.Name = "btnSaveFile";
             btnSaveFile.Size = new Size(56, 43);
@@ -208,17 +228,49 @@
             btnSaveFile.UseVisualStyleBackColor = true;
             btnSaveFile.Click += btnSaveFile_Click;
             // 
+            // panelCanvas
+            // 
+            panelCanvas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panelCanvas.AutoScroll = true;
+            panelCanvas.Controls.Add(picCanvas);
+            panelCanvas.Location = new Point(17, 167);
+            panelCanvas.Name = "panelCanvas";
+            panelCanvas.Size = new Size(624, 344);
+            panelCanvas.TabIndex = 7;
+            // 
+            // trbZoom
+            // 
+            trbZoom.Location = new Point(6, 22);
+            trbZoom.Maximum = 50;
+            trbZoom.Minimum = 10;
+            trbZoom.Name = "trbZoom";
+            trbZoom.Size = new Size(135, 45);
+            trbZoom.TabIndex = 2;
+            trbZoom.Value = 10;
+            trbZoom.Scroll += trbZoom_Scroll;
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(trbZoom);
+            groupBox5.Location = new Point(492, 12);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(147, 74);
+            groupBox5.TabIndex = 8;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "확대／축소";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(653, 523);
+            ClientSize = new Size(727, 523);
+            Controls.Add(groupBox5);
+            Controls.Add(panelCanvas);
             Controls.Add(btnSaveFile);
             Controls.Add(btnOpenFile);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(picCanvas);
             Controls.Add(lblAppName);
             Margin = new Padding(2);
             Name = "Form1";
@@ -230,6 +282,10 @@
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trbLineWidth).EndInit();
+            panelCanvas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)trbZoom).EndInit();
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -248,5 +304,9 @@
         private TrackBar trbLineWidth;
         private Button btnOpenFile;
         private Button btnSaveFile;
+        private Panel panelCanvas;
+        private TrackBar trbZoom;
+        private GroupBox groupBox4;
+        private GroupBox groupBox5;
     }
 }
