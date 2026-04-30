@@ -66,7 +66,9 @@
             picCanvas.TabIndex = 1;
             picCanvas.TabStop = false;
             picCanvas.Click += picCanvas_Click;
+            picCanvas.Paint += picCanvas_Paint;
             picCanvas.MouseDown += picCanvas_MouseDown;
+            picCanvas.MouseMove += picCanvas_MouseMove;
             picCanvas.MouseUp += picCanvas_MouseUp;
             // 
             // groupBox1
