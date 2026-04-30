@@ -52,19 +52,20 @@
             lblAppName.AutoSize = true;
             lblAppName.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
             lblAppName.ForeColor = Color.Blue;
-            lblAppName.Location = new Point(17, 22);
+            lblAppName.Location = new Point(17, 9);
             lblAppName.Margin = new Padding(2, 0, 2, 0);
             lblAppName.Name = "lblAppName";
             lblAppName.Size = new Size(190, 45);
             lblAppName.TabIndex = 0;
             lblAppName.Text = "SimplePaint";
+            lblAppName.Click += lblAppName_Click;
             // 
             // picCanvas
             // 
             picCanvas.Location = new Point(9, 140);
             picCanvas.Margin = new Padding(2);
             picCanvas.Name = "picCanvas";
-            picCanvas.Size = new Size(596, 189);
+            picCanvas.Size = new Size(602, 301);
             picCanvas.TabIndex = 1;
             picCanvas.TabStop = false;
             picCanvas.Click += picCanvas_Click;
@@ -77,6 +78,7 @@
             // 
             groupBox1.Controls.Add(btnRectangle);
             groupBox1.Controls.Add(btnLine);
+            groupBox1.ForeColor = Color.Red;
             groupBox1.Location = new Point(17, 64);
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
@@ -84,10 +86,11 @@
             groupBox1.Size = new Size(184, 59);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            groupBox1.Text = "도형선택";
             // 
             // btnRectangle
             // 
+            btnRectangle.ForeColor = SystemColors.ActiveCaptionText;
             btnRectangle.Location = new Point(62, 20);
             btnRectangle.Margin = new Padding(2);
             btnRectangle.Name = "btnRectangle";
@@ -99,6 +102,7 @@
             // 
             // btnLine
             // 
+            btnLine.ForeColor = SystemColors.ActiveCaptionText;
             btnLine.Location = new Point(5, 20);
             btnLine.Margin = new Padding(2);
             btnLine.Name = "btnLine";
@@ -122,6 +126,7 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(cmbColor);
+            groupBox2.ForeColor = Color.Blue;
             groupBox2.Location = new Point(219, 64);
             groupBox2.Margin = new Padding(2);
             groupBox2.Name = "groupBox2";
@@ -129,7 +134,7 @@
             groupBox2.Size = new Size(106, 59);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
-            groupBox2.Text = "groupBox2";
+            groupBox2.Text = "색 선택";
             // 
             // cmbColor
             // 
@@ -145,6 +150,7 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(trbLineWidth);
+            groupBox3.ForeColor = Color.Red;
             groupBox3.Location = new Point(330, 64);
             groupBox3.Margin = new Padding(2);
             groupBox3.Name = "groupBox3";
@@ -152,7 +158,7 @@
             groupBox3.Size = new Size(148, 59);
             groupBox3.TabIndex = 4;
             groupBox3.TabStop = false;
-            groupBox3.Text = "groupBox3";
+            groupBox3.Text = "선 두께";
             // 
             // trbLineWidth
             // 
@@ -165,6 +171,8 @@
             // 
             // btnOpenFile
             // 
+            btnOpenFile.Font = new Font("궁서체", 12F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            btnOpenFile.ForeColor = Color.Blue;
             btnOpenFile.Location = new Point(492, 88);
             btnOpenFile.Margin = new Padding(2);
             btnOpenFile.Name = "btnOpenFile";
@@ -175,6 +183,8 @@
             // 
             // btnSaveFile
             // 
+            btnSaveFile.Font = new Font("궁서체", 12F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            btnSaveFile.ForeColor = Color.Red;
             btnSaveFile.Location = new Point(553, 88);
             btnSaveFile.Margin = new Padding(2);
             btnSaveFile.Name = "btnSaveFile";
@@ -188,7 +198,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(622, 338);
+            ClientSize = new Size(622, 445);
             Controls.Add(btnSaveFile);
             Controls.Add(btnOpenFile);
             Controls.Add(groupBox3);
@@ -199,7 +209,7 @@
             Controls.Add(lblAppName);
             Margin = new Padding(2);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Simple Paint v1.0";
             ((System.ComponentModel.ISupportInitialize)picCanvas).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
