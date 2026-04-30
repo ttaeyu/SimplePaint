@@ -51,18 +51,19 @@
             // lblAppName
             // 
             lblAppName.AutoSize = true;
-            lblAppName.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblAppName.Font = new Font("Leelawadee", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblAppName.ForeColor = Color.Blue;
             lblAppName.Location = new Point(17, 9);
             lblAppName.Margin = new Padding(2, 0, 2, 0);
             lblAppName.Name = "lblAppName";
-            lblAppName.Size = new Size(190, 45);
+            lblAppName.Size = new Size(199, 39);
             lblAppName.TabIndex = 0;
             lblAppName.Text = "SimplePaint";
             lblAppName.Click += lblAppName_Click;
             // 
             // picCanvas
             // 
+            picCanvas.BorderStyle = BorderStyle.FixedSingle;
             picCanvas.Location = new Point(17, 166);
             picCanvas.Margin = new Padding(2);
             picCanvas.Name = "picCanvas";
@@ -143,7 +144,7 @@
             groupBox2.Margin = new Padding(2);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(2);
-            groupBox2.Size = new Size(106, 59);
+            groupBox2.Size = new Size(106, 70);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
             groupBox2.Text = "색 선택";
@@ -167,7 +168,7 @@
             groupBox3.Margin = new Padding(2);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(2);
-            groupBox3.Size = new Size(148, 59);
+            groupBox3.Size = new Size(148, 70);
             groupBox3.TabIndex = 4;
             groupBox3.TabStop = false;
             groupBox3.Text = "선 두께";
@@ -185,10 +186,10 @@
             // 
             btnOpenFile.Font = new Font("궁서체", 12F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btnOpenFile.ForeColor = Color.Blue;
-            btnOpenFile.Location = new Point(492, 88);
+            btnOpenFile.Location = new Point(492, 81);
             btnOpenFile.Margin = new Padding(2);
             btnOpenFile.Name = "btnOpenFile";
-            btnOpenFile.Size = new Size(56, 36);
+            btnOpenFile.Size = new Size(56, 43);
             btnOpenFile.TabIndex = 5;
             btnOpenFile.Text = "열기";
             btnOpenFile.UseVisualStyleBackColor = true;
@@ -198,10 +199,10 @@
             // 
             btnSaveFile.Font = new Font("궁서체", 12F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btnSaveFile.ForeColor = Color.Red;
-            btnSaveFile.Location = new Point(553, 88);
+            btnSaveFile.Location = new Point(553, 81);
             btnSaveFile.Margin = new Padding(2);
             btnSaveFile.Name = "btnSaveFile";
-            btnSaveFile.Size = new Size(56, 36);
+            btnSaveFile.Size = new Size(56, 43);
             btnSaveFile.TabIndex = 6;
             btnSaveFile.Text = "저장";
             btnSaveFile.UseVisualStyleBackColor = true;
