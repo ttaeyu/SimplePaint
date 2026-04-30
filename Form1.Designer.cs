@@ -66,7 +66,7 @@
             picCanvas.Location = new Point(17, 166);
             picCanvas.Margin = new Padding(2);
             picCanvas.Name = "picCanvas";
-            picCanvas.Size = new Size(602, 332);
+            picCanvas.Size = new Size(625, 332);
             picCanvas.TabIndex = 1;
             picCanvas.TabStop = false;
             picCanvas.Click += picCanvas_Click;
