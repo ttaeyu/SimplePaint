@@ -27,7 +27,25 @@ namespace SimplePaint
 
         private void cmbColor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            penColor = Color.FromName(cmbColor.Text);
+            switch (cmbColor.SelectedIndex)
+            {
+                case 0: // 첫 번째(Black 검정)를 골랐다면
+                    penColor = Color.Black; 
+            break;
+                case 1: // 두 번째(Red 빨강)를 골랐다면
+                    penColor = Color.Red; 
+            break;
+                case 2: // 세 번째(Blue 파랑)를 골랐다면[cite: 1]
+                    penColor = Color.Blue;
+            break;
+                case 3: // 네 번째(Green 녹색)를 골랐다면[cite: 1]
+                    penColor = Color.Green; 
+            break;
+                default:
+                   
+            penColor = Color.Black; // 혹시 몰라서 기본은 검정으로![cite: 1]
+                    break;
+            }
         }
 
         private void trbLineWidth_Scroll(object sender, EventArgs e)

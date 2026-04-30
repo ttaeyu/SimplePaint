@@ -134,6 +134,7 @@
             // cmbColor
             // 
             cmbColor.FormattingEnabled = true;
+            cmbColor.Items.AddRange(new object[] { "Black 검정", "Red 빨강", "Blue 파랑", "Green 녹색" });
             cmbColor.Location = new Point(5, 27);
             cmbColor.Margin = new Padding(2);
             cmbColor.Name = "cmbColor";
